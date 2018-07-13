@@ -7,7 +7,7 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class MyDataModel {
 
-	public static JDBCDataModel myDataModel() {
+    public static JDBCDataModel myDataModel() {
         MysqlDataSource dataSource = new MysqlDataSource();
         JDBCDataModel dataModel = null;
         try {
@@ -16,17 +16,19 @@ public class MyDataModel {
             dataSource.setPassword("hzb19961010");
             dataSource.setDatabaseName("movie");
 
-
-            ConnectionPoolDataSource connectionPool=new ConnectionPoolDataSource(dataSource);
+            ConnectionPoolDataSource connectionPool = new ConnectionPoolDataSource(dataSource);
             // use JNDI
-            dataModel = new MySQLJDBCDataModel(connectionPool,"movie_preferences", "userID", "movieID","preference");
-
+            dataModel = new MySQLJDBCDataModel(connectionPool,
+                                               "movie_preferences",
+                                               "userID",
+                                               "movieID",
+                                               "preference");
 
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
         return dataModel;
-    } 
+    }
 
 }
